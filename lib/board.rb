@@ -15,26 +15,30 @@ class Board
   def initialize n, m
     @n = n
     @m = m
-    @a = NArray.byte(@n, @n).random
+    @a = NArray.byte(@n, @n)
     @pat_h = NArray.byte(@m, @m)
     @pat_v = NArray.byte(@m, @m)
     @pat_d = NArray.byte(@m, @m)
+    @pat_r = NArray.byte(@m, @m)
     @pat_h[true, 0] = 1
     @pat_v[0, true] = 1
     @pat_d.diag!
+    @pat_r = @pat_d.rot90
   end
 
   def check num
     pat_win = NArray.byte(@m).fill(num)
     @n.times do |x|
-      break if (i = x + @m) >= @n
+      break if (i = x + @m) > @n
       @n.times do |y|
-        break if (j = y + @m) >= @n
+        break if (j = y + @m) > @n
         sub = @a[x...i, y...j]
         h = sub.mask @pat_h
         v = sub.mask @pat_v
         d = sub.mask @pat_d
-        return true if h == pat_win || v == pat_win || i == pat_win
+        r = sub.mask @pat_r
+        p sub
+        return true if h == pat_win || v == pat_win || d == pat_win || r == pat_win
       end
     end
   end
