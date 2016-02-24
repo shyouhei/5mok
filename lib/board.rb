@@ -9,9 +9,9 @@ class Board
   def check num
     #                                      n=5, m=3
     re_h = /#{num}{#{@m}}/               # /○{3}/
-    re_v = /(#{num}.{#{@n}}){#{@m}}/m    # /(○.){5}/m
-    re_d = /(#{num}.{#{@n+1}}){#{@m}}/m  # /(○.){6}/m
-    re_r = /(#{num}.{#{@n-1}}){#{@m}}/m  # /(○.){4}/m
+    re_v = /(#{num}.{#{@n}}){#{@m}}/m    # /(○.{5}){3}/m
+    re_d = /(#{num}.{#{@n+1}}){#{@m}}/m  # /(○.{6}){3}/m
+    re_r = /(#{num}.{#{@n-1}}){#{@m}}/m  # /(○.{4}){3}/m
     str = @buf.join("\n")+' '*@n
     case str when re_h, re_v, re_d, re_r then
       return true
