@@ -5,10 +5,11 @@ require 'scanf'
 n, m = STDIN.scanf('%d%d')
 b = Board.new(n, m)
 [1, 2].cycle.each do |x|
-  x = STDIN.scanf('%d%d')
+  y, z = STDIN.scanf('%d%d')
   begin
-    b.place n, m, i
+    b.place y, z, x
   rescue => e
+    raise e
     case e.massage
     when /win/ then
       puts '勝ちです'
