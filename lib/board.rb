@@ -37,7 +37,6 @@ class Board
         v = sub.mask @pat_v
         d = sub.mask @pat_d
         r = sub.mask @pat_r
-        p sub
         return true if h == pat_win || v == pat_win || d == pat_win || r == pat_win
       end
     end
