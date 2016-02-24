@@ -54,7 +54,7 @@ class Test01Scenario < Test::Unit::TestCase
   end
 
   def test_win_r
-    assert_raises(RuntimeError, 'already') do
+    assert_raises(RuntimeError, 'win') do
       b =  Board.new(5, 3)
       [
         4,0,1,
